@@ -11,7 +11,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-var formdb = firebase.database().ref("user-data");
+var auth = firebase.auth();
+var formdb = firebase.database();
 
 document.getElementById('regform').addEventListener('submit', submitSignupForm);
 
@@ -22,21 +23,38 @@ function submitSignupForm(e){
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
 
-    formdb.orderByChild("email").equalTo(email)
-    .once("value").then((snapshot) => {
-        if(snapshot.exists())
-            alert("Email allready exists");
-        else{
-            formdb.push().set({
-                email: email,
-                name: name,
-                password: password,
-            });
-            alert("Registeration Successful");
-        }
+    // formdb.orderByChild("email").equalTo(email)
+    // .once("value").then((snapshot) => {
+    //     if(snapshot.exists())
+    //         alert("Email allready exists");
+    //     else{
+    //         formdb.push().set({
+    //             email: email,
+    //             name: name,
+    //             password: password,
+    //         });
+    //         alert("Registeration Successful");
+    //     }
+    // });
+
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(()=>{
+
+        var user = auth.currentUser
+        formdb.ref().child('user-data/' + user.uid).set({
+            email: email,
+            name: name,
+            password: password,
+            last_login: Date.now()
+        });
+        alert("Success");
+
+    }).catch((error)=>{
+        // alert(error.code);
+        alert(error.message);
     });
 
-    document.getElementById('regform').reset();
+    // document.getElementById('regform').reset();
 }
 
 function alert(s){
