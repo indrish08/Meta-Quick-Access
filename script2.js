@@ -11,7 +11,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-var formdb = firebase.database().ref("user-data");
+var formdb = firebase.database();
 
 document.getElementById('loginform').addEventListener('submit', submitSigninForm);
 
@@ -42,6 +42,24 @@ function submitSigninForm(e){
                 alert(`Password doesn't match`);
         });
     });
+
+    auth.signInWithEmailAndPassword(email, password)
+    .then(function() {
+    var user = auth.currentUser
+    
+    database.ref().child('user-data/' + user.name).update({
+        last_login : Date.now()
+    })
+
+    alert('User Logged In!!')
+    location.href="/dashboard.html"
+    
+
+    })
+    .catch(function(error) {
+        console.log(error.code);
+        console.log(error.message);
+    })
 }
 
 function alert(s){

@@ -39,7 +39,6 @@ function submitSignupForm(e){
 
     auth.createUserWithEmailAndPassword(email, password)
     .then(()=>{
-
         var user = auth.currentUser
         formdb.ref().child('user-data/' + user.uid).set({
             email: email,
@@ -47,8 +46,7 @@ function submitSignupForm(e){
             password: password,
             last_login: Date.now()
         });
-        alert("Success");
-
+        alert("Registeration Success");
     }).catch((error)=>{
         // alert(error.code);
         alert(error.message);
