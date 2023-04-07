@@ -13,9 +13,9 @@ firebase.initializeApp(firebaseConfig);
 
 var formdb = firebase.database().ref("user-data");
 
-document.getElementById('regform').addEventListener('submit', submitForm);
+document.getElementById('regform').addEventListener('submit', submitSignupForm);
 
-function submitForm(e){
+function submitSignupForm(e){
     e.preventDefault();
 
     var name = document.getElementById('name').value;
@@ -36,8 +36,8 @@ function submitForm(e){
 
 function savedata(name, email, password){
     formdb.orderByChild("email").equalTo(email)
-    .once("value").then((snapchat) => {
-        if(snapchat.exists())
+    .once("value").then((snapshot) => {
+        if(snapshot.exists())
             console.log("Email allready exists");
         else
             formdb.push().set({

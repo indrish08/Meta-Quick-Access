@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+	<script type="module" src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+	<script type="module" src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>	
 </head>
 
 <body>
@@ -13,7 +15,8 @@
 
 <div class="container" id="container">
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form id="loginform" action="#">
+			<div class="alert" >Registeration Successful</div>
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="https://www.facebook.com/"class="social" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -21,10 +24,10 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in" target="_blank" ></i></a>
 			</div>
 			<span>or use your account</span>
-			<input id="inpMail" placeholder="Email"/>
+			<input id="inpMail" value="kalifa12@gmail.com" placeholder="Email"/>
 			<input id='inpPass' type="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>
-			<button href="login.html">Sign In</button>
+			<button type="submit" href="login.html">Sign In</button>
 		</form>
 	</div>
 	<div class="form-container sign-up-container">
@@ -47,7 +50,7 @@
 			<div class="overlay-panel overlay-right">
 				<h1>Hi There!</h1>
 				<p>Enter your personal details to open an account with us</p>
-				<a href="signup.html" target="_blank">
+				<a href="signup.html">
 					<button class="ghost" id="signUp">Sign Up</button>
 
 				</a>
@@ -57,6 +60,7 @@
 </div>
 
 
-<!-- <script src="script.js" charset="utf-8"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+<script src="script2.js" charset="utf-8"></script>
 </body>
 </html>
