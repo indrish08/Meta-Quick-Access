@@ -22,29 +22,31 @@ function submitSignupForm(e){
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
 
-    savedata(name, email, password);
-
-    console.log("Success..!!");
-
-    document.querySelector(".alert").style.display = 'block';
-    setTimeout(()=>{
-        document.querySelector(".alert").style.display = 'none';
-    }, 3000);
-
-    document.getElementById('regform').reset();
-}
-
-function savedata(name, email, password){
     formdb.orderByChild("email").equalTo(email)
     .once("value").then((snapshot) => {
         if(snapshot.exists())
-            console.log("Email allready exists");
-        else
+            alert("Email allready exists");
+        else{
             formdb.push().set({
                 email: email,
                 name: name,
                 password: password,
             });
+            alert("Registeration Successful");
+        }
     });
-    
+
+    document.getElementById('regform').reset();
+}
+
+function alert(s){
+    const alert = document.querySelector(".alert");
+    alert.innerHTML = s;
+    console.log(alert.innerHTML);
+
+    alert.style.display = 'block';
+
+    setTimeout(()=>{
+        alert.style.display = 'none';
+    }, 3000);
 }
