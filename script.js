@@ -36,16 +36,17 @@ function submitSignupForm(e){
     //         alert("Registeration Successful");
     //     }
     // });
-
+    test()
     auth.createUserWithEmailAndPassword(email, password)
     .then(()=>{
         var user = auth.currentUser
-        formdb.ref().child('user-data/' + user.uid).set({
+        formdb.ref().child('user-data/' + user.email.split('@')[0]).set({
             email: email,
             name: name,
             password: password,
             last_login: Date.now()
         });
+        test()
         alert("Registeration Success");
     }).catch((error)=>{
         // alert(error.code);
@@ -53,6 +54,10 @@ function submitSignupForm(e){
     });
 
     // document.getElementById('regform').reset();
+}
+
+function test(){
+    console.log(auth.currentUser);
 }
 
 function alert(s){
