@@ -60,7 +60,7 @@ function submitSigninForm(e){
     .then(function() {
     var user = auth.currentUser
     
-    formdb.ref().child('user-data/' + user.email.split('@')[0]).update({
+    formdb.ref().child('user-data/' + user.email.replace(/[@|.]/g,'-')).update({
         last_login : Date.now()
     })
     console.log(user);
