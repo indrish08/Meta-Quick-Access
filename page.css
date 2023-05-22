@@ -51,12 +51,11 @@ nav {
 }
 
 nav a {
-  border: 2px solid black;
-  padding: 25px;
-  color: white;
-  background-color: bisque;
-  border-radius: 8px;
-    margin-right: 16px;
+    border: 2px solid black;
+    padding: 25px;
+    color: white;
+    /* background-color: bisque; */
+    border-radius: 10px;
     font-size: 14px;
     color: #737373;
     text-decoration: none;
@@ -76,16 +75,29 @@ footer {
 }
 
 footer nav {
+    /* display: flex; */
+    /* align-items: center; */
+    /* height: 160px; */
+    /* justify-content: center; */
+    margin: 25px ;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 22px;
+    /* margin-right: 10%; */
+    /* padding: 15%; */
 }
 
 footer nav a {
+    /* border-radius: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 16px;
-    font-size: 14px;
+    font-size: 22px;
+    height: 200px;
+    width: 160px;
     color: #737373;
     text-decoration: none;
+    box-shadow: 16px 20px 25px 4px rgba(92, 81, 81, 0.514);
 }
 
 footer nav a:last-child {
@@ -98,11 +110,11 @@ footer nav a:last-child {
         color: white;
         background-color: bisque;
         border-radius: 8px;
-          font-size: 14px;
-          color: #737373;
-          text-decoration: none;
-      }
-      footer nav a {
+        font-size: 14px;
+        color: #737373;
+        text-decoration: none;
+    }
+    footer nav a {
         width: 100%;
         margin-right: 10px;
         font-size: 14px;
@@ -125,4 +137,30 @@ footer nav a:last-child {
     position: absolute;
     top: 0.5%;
     right: 1%;
+}
+
+
+#usericon{
+    height: 60px;
+    border-radius: 100%;
+}
+
+.apps{
+    color: black;
+}
+#fb{
+    background-image:linear-gradient(rgb(207, 222, 250),rgb(107, 106, 204));
+    /* color: lightskyblue; */
+}
+#mesn{
+    background-image: linear-gradient(rgb(169,143,218) , rgb(231, 73 ,73));
+    /* color: lightskyblue; */
+}
+#wp{
+    background-image:linear-gradient(rgb(40, 207, 82),rgb(16, 104, 4));
+    /* color: lightskyblue; */
+}
+#in{
+    background-image:linear-gradient(red,rgb(107, 106, 204));
+    /* color: lightskyblue; */
 }

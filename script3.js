@@ -17,10 +17,19 @@ var formdb = firebase.database();
 
 let mailid = document.querySelector('.usermailid');
 setTimeout(()=>{
-    // alert.style.display = 'none';
-    // console.log(auth.currentUser);
-    // let mail = auth.currentUser.email;
-    // console.log(mail);
-    mailid.innerHTML = auth.currentUser.email;
-}, 1200);
+    if(auth.currentUser!=null) {
 
+        mailid.innerHTML = auth.currentUser.email;
+    }
+    else{
+        mailid.innerHTML = "Login";
+        var link = document.createElement('a');
+        link.href="index.html";
+        link.appendChild(mailid);
+        document.getElementById("user").appendChild(link);
+    }
+}, 1500);
+
+// function logout(){
+
+// }

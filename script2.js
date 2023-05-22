@@ -66,7 +66,7 @@ function submitSigninForm(e){
     console.log(user);
     alert('User Logged In!!')
     test();
-    location.href="/dashboard.html"
+    location.href="dashboard.html"
     
 
     })
