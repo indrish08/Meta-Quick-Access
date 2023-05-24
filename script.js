@@ -22,20 +22,6 @@ function submitSignupForm(e){
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-
-    // formdb.orderByChild("email").equalTo(email)
-    // .once("value").then((snapshot) => {
-    //     if(snapshot.exists())
-    //         alert("Email allready exists");
-    //     else{
-    //         formdb.push().set({
-    //             email: email,
-    //             name: name,
-    //             password: password,
-    //         });
-    //         alert("Registeration Successful");
-    //     }
-    // });
     auth.createUserWithEmailAndPassword(email, password)
     .then(()=>{
         var user = auth.currentUser

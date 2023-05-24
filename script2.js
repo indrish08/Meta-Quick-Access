@@ -15,60 +15,19 @@ var auth = firebase.auth();
 var formdb = firebase.database();
 
 document.getElementById('loginform').addEventListener('submit', submitSigninForm);
-
 function submitSigninForm(e){
     e.preventDefault();
-
     var email = document.getElementById('inpMail').value;
     var password = document.getElementById('inpPass').value;
-    
-    // console.log(email+" "+password);
-
-    // formdb.orderByChild("email").equalTo(email)
-    // .once("value").then((snapshot) => {
-    //     if(!snapshot.exists()){
-    //         // console.log(`Email id doesn't exist`);
-    //         alert(`Email id doesn't exist`);
-            
-    //     }
-    //     snapshot.forEach((element) => {
-    //         // console.log(element.val().password);
-    //         console.log(password === element.val().password);
-    //         if(password === element.val().password){
-    //             alert(`Login Successful`);
-    //             setTimeout(()=>{
-    //                 location.href = "dashboard.html";
-    //             }, 1500);
-    //         }else
-    //             alert(`Password doesn't match`);
-    //     });
-    // });
-
-    // // auth.signOut();
-
-    // auth.signOut().then(() => {
-    //     // Sign-out successful.
-    //     console.log(1);
-    // }).catch((error) => {
-    //     // An error happened.
-    //     console.log(error.message);
-    //   });
-      
-    // test();
-
     auth.signInWithEmailAndPassword(email, password)
     .then(function() {
     var user = auth.currentUser
-    
     formdb.ref().child('user-data/' + user.email.replace(/[@|.]/g,'-')).update({
         last_login : Date.now()
     })
     console.log(user);
     alert('User Logged In!!')
-    test();
     location.href="dashboard.html"
-    
-
     })
     .catch(function(error) {
         console.log(error.code);
@@ -76,17 +35,11 @@ function submitSigninForm(e){
     })
 }
 
-function test(){
-    console.log(auth.currentUser);
-}
-
 function alert(s){
     const alert = document.querySelector(".alert");
     alert.innerHTML = s;
     console.log(alert.innerHTML);
-
     alert.style.display = 'block';
-
     setTimeout(()=>{
         alert.style.display = 'none';
     }, 3000);
